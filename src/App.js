@@ -1,5 +1,4 @@
 import './App.css';
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import api from './api';
@@ -15,13 +14,13 @@ export default function App() {
     getPais();
     getCidade();
 
- }, [])
+  }, [])
 
-function getPais() {
-  api.get('/country').then((response) => setPais(response.data))
-    .catch((err) => {
-      console.log(err);
-    })
+  function getPais() {
+    api.get('/country').then((response) => setPais(response.data))
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   function getCidade() {
@@ -29,65 +28,105 @@ function getPais() {
       .catch((err) => {
         console.log(err);
       })
-    }
-  
+  }
+
 
   return (
     <div className="App">
-      <div className="mt-3">
-        <Container>
-          <h6 className="font-weight-bold" class="text-primary">DESTINOS DE INTERESSE</h6>
-          <Form >
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">Nome</Form.Label>
-              <Form.Control id="disabledTextInput" />
-            </Form.Group>
+      <div class="container">]
+        <div class=" text-center mt-3 ">
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">Email</Form.Label>
-              <Form.Control id="disabledTextInput" />
-            </Form.Group>
+          <h1 class="text-primary" >DESTINOS DE INTERESSE</h1>
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">Telefone</Form.Label>
-              <Form.Control id="disabledTextInput" />
-            </Form.Group>
+        </div>
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">CPF</Form.Label>
-              <Form.Control id="disabledTextInput" />
-            </Form.Group>
+        <div class="row ">
+          <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+              <div class="card-body bg-light">
 
-            <br />
-            <br />
+                <div class="container">
+                  <form id="contact-form" role="form">
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledSelect">País</Form.Label>
-              <Form.Select id="disabledSelect">
-            {pais.map((pa)=> (
-                <option key={pa.code}>{pa.name}</option>
-             ))}
+                    <div class="controls">
 
-              </Form.Select>
-            </Form.Group>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_name">Nome</label>
+                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your name" required="required" data-error="Firstname is required." />
 
-            
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledSelect">Cidade</Form.Label>
-              <Form.Select id="disabledSelect">
-            {cidade.map((cida)=> (
-                <option key={cida.id}>{cida.name}</option>
-             ))}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_lastname">Telefone</label>
+                            <input id="form_lastname" type="number" name="surname" class="form-control" placeholder="Please enter your phone" required="required" data-error="Phone number is required." />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_email">Email</label>
+                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email" required="required" data-error="Valid email is required." />
 
-              </Form.Select>
-            </Form.Group>
-            
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_need">CPF</label>
+                            <input id="form_need" name="need" class="form-control" required="required" placeholder="Please enter your CPF"/>
 
-          </Form>
-        </Container >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+
+                            <br/>
+
+                            <Form.Group required="required" className="mb-3">
+                              <Form.Label htmlFor="disabledSelect">País</Form.Label>
+                              <Form.Select multiple aria-label="multiple select example" id="disabledSelect">
+                                {pais.map((pa) => (
+                                  <option key={pa.code}>{pa.name}</option>
+                                ))}
+
+                              </Form.Select>
+                            </Form.Group>
+
+                            <Form.Group required="required" className="mb-3">
+                              <Form.Label htmlFor="disabledSelect">Cidade</Form.Label>
+                              <Form.Select multiple aria-label="multiple select example" id="disabledSelect">
+                                {cidade.map((cida) => (
+                                  <option key={cida.id}>{cida.name}</option>
+                                ))}
+
+                              </Form.Select>
+                            </Form.Group>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
       </div>
 
     </div>
+
   );
 }
