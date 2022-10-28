@@ -34,7 +34,7 @@ export default function App() {
   return (
     <div className="App">
 
-      <div class="container">]
+      <div class="container">
         <div class=" text-center mt-3 ">
 
           <h1 class="text-primary" >DESTINOS DE INTERESSE</h1>
